@@ -12,32 +12,33 @@ import {
 
 class Timing extends Component {
     // 构造
-      constructor(props) {
+    constructor(props) {
         super(props);
         // 初始状态
         this.state = {};
-          this.animatedValue = new Animated.Value(0);
-      }
+        this.animatedValue = new Animated.Value(0);
+    }
 
     componentDidMount() {
         this.animate();
     }
 
-    animate(){
+    animate() {
         this.animatedValue.setValue(0);
         Animated.timing(
             this.animatedValue,
             {
-                toValue:1,
-                duration:2000,
-                easing:Easing.linear
+                toValue: 1,
+                duration: 2000,
+                easing: Easing.linear
             }
         ).start(()=>this.animate());
     }
-    render(){
+
+    render() {
         const marginLeft = this.animatedValue.interpolate({
-            inputRange:[0,1],
-            outputRange:[0,300]
+            inputRange: [0, 1],
+            outputRange: [0, 300]
         });
         const opacity = this.animatedValue.interpolate({
             inputRange: [0, 0.5, 1],
@@ -59,38 +60,38 @@ class Timing extends Component {
             <View style={styles.container}>
                 <Animated.View
                     style={{
-          marginLeft,
-          height: 30,
-          width: 40,
-          backgroundColor: 'red'}} />
+                      marginLeft,
+                      height: 30,
+                      width: 40,
+                      backgroundColor: 'red'}}/>
                 <Animated.View
                     style={{
-          opacity,
-          marginTop: 10,
-          height: 30,
-          width: 40,
-          backgroundColor: 'blue'}} />
+                      opacity,
+                      marginTop: 10,
+                      height: 30,
+                      width: 40,
+                      backgroundColor: 'blue'}}/>
                 <Animated.View
                     style={{
-          marginLeft: movingMargin,
-          marginTop: 10,
-          height: 30,
-          width: 40,
-          backgroundColor: 'orange'}} />
+                      marginLeft: movingMargin,
+                      marginTop: 10,
+                      height: 30,
+                      width: 40,
+                      backgroundColor: 'orange'}}/>
                 <Animated.Text
                     style={{
-          fontSize: textSize,
-          marginTop: 10,
-          color: 'green'}} >
+                      fontSize: textSize,
+                      marginTop: 10,
+                      color: 'green'}}>
                     Animated Text!
                 </Animated.Text>
                 <Animated.View
                     style={{
-          transform: [{rotateX}],
-          marginTop: 50,
-          height: 30,
-          width: 40,
-          backgroundColor: 'black'}}>
+                      transform: [{rotateX}],
+                      marginTop: 50,
+                      height: 30,
+                      width: 40,
+                      backgroundColor: 'black'}}>
                     <Text style={{color: 'white'}}>Hello from TransformX</Text>
                 </Animated.View>
             </View>
