@@ -18,7 +18,7 @@ class animations extends Component {
   render() {
     return (
         <View style={styles.container}>
-            <App />
+            <Root />
         </View>
     );
   }
